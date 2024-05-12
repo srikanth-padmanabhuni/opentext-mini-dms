@@ -1,0 +1,75 @@
+* Mini DMS Application
+=================================
+
+Tech Stack: Angular, Java Spring Boot, Postgres
+Req: 
+1. Application to browse a specific folder.  
+2. On Selecting the folder, Specified files will be listed all files in UI (left hand side)s (Upto 8)
+3. On selecting PDF File, User should be able to view the PDF Document.
+4. (Right Hand Side) Define Meta button(Button), On Clicking on it, he can define the field. (On Clicking Yes, it populates in UI Right hand side)
+5. User can give values to the fields. On clicking save, it needs to be saved in BE DB
+
+
+Email: spaled@opentext.com
+Mobile: 9885919573
+
+
+
+===============================================================================================================================================================
+
+Angular Components:
+--------------------------
+
+1. Header Component
+2. App Component
+3. File Selector Component
+4. PDF Viewer Component
+5. Meta Data Popup Component
+6. Meta Data Form Component
+
+
+Backend Files:
+------------------------
+1. File Controller
+2. File Service
+3. File Repo
+
+4. Meta Data Service
+5. Meta Data Repo
+
+6. Meta Data Value Service
+7. Meta Data Value Repo
+
+8. Static Data
+9. Utility
+
+10. File Entity
+11. Meta Data Entity
+12. Meta Data Value Entity
+
+13. Meta Data Dto
+14. File Dto
+15. Meta Data Value Dto
+
+
+Schema:
+-------------------
+
+Meta Data {
+	id: Long,
+	metadata: jsonString => [Json Format: [{ id: Long, type: String, title: String }]
+}
+
+Meta Data Values {
+	id: Long,
+	metaDataId: Long,
+	metaDataValues: jsonString => [Json Format: [{id: Long, metaDataFieldId: Long, value: String }]]
+}
+
+File {
+	id: Long,
+	fileName: String,
+	fileInfo: jsonString,
+	metaDataId: Long,
+	metaDataValueId: Long 
+}

@@ -1,0 +1,12 @@
+<div>
+  <div>
+    <input type="file" multiple (change)="onFileChange($event)" webkitdirectory >
+  </div>
+  <div class="name-list" *ngIf="files && files.length > 0">
+    <div class="container">
+      <div *ngFor="let file of files; let i = index">
+        {{ file.name }} &nbsp; <button class="btn btn-sm btn-info" (click)="selectFile(file.fileUrl)">Select</button>
+      </div>
+    </div>
+  </div>
+</div>

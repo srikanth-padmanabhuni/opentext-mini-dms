@@ -1,0 +1,31 @@
+<div class="add-lessons-form" [formGroup]="form" *ngIf="selectedFile">
+  <button class="btn btn-sm btn-primary" (click)="addMetaData()">
+    Add Meta Data
+  </button>
+  <ng-container formArrayName="metaData">
+      <ng-container *ngFor="let metaDataForm of metaData.controls; let i = index">
+          <div class="lesson-form-row" [formGroup]="metaDataForm">
+                <div>
+                  <label>Field Title</label>
+                  <input type="text"
+                         formControlName="title"
+                         placeholder="Field title">
+                </div>
+                <div>
+                  <label>Field Type</label>
+                  <select formControlName="type"
+                          placeholder="Field Type">
+                      <option value="text">Text</option>
+                      <option value="number">Number</option>
+                  </select>
+                </div>
+              <button class="btn btn-sm btn-danger" (click)="deleteMetaData(i)">
+                Delete
+              </button>
+          </div>
+      </ng-container>
+  </ng-container>
+</div>
+<button class="btn btn-sm btn-primary" *ngIf="metaData.length > 0 && form.valid" (click)="save()">
+  Save
+</button>

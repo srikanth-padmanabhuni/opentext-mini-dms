@@ -1,0 +1,24 @@
+<div *ngIf="metaData">  
+  <div [formGroup]="form">  
+    <ng-container formArrayName="metaDataFieldValues">
+      <ng-container *ngFor="let metaDataForm of metaDataFieldValues.controls; let i = index">
+          <div class="lesson-form-row" [formGroup]="metaDataForm">
+                <div>
+                  <label>{{getTitle(i)}} : </label>
+                  <div *ngIf="getType(i) == 'text'">
+                    <input type="text"
+                        formControlName="metaDataFieldValue"
+                        placeholder="Text Field Value">
+                  </div>
+                  <div *ngIf="getType(i) == 'number'">
+                    <input type="number"
+                        formControlName="metaDataFieldValue"
+                        placeholder="Numeric Field Value">
+                  </div>
+                </div>
+          </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <button class="btn btn-sm btn-success" (click)="saveFileNdMetaData()"> Save </button>
+</div>
